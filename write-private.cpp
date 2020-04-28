@@ -4,19 +4,25 @@ class C{
 public:
     int get_y(){return y;}
     int get_x(){return x;}
+    int* getAdrX(){return &x;}
+    int* getAdrY(){return &y;}
 private:
     int x=0;
     int y=0;
 };
 
 int main(){
-    bool b;
-    bool *bp = &b;
+    int i;
+    int *ip = &i;
     C c;
-    bp+=16;
-    *bp = 1;
-    bp-=4;
-    *bp=1;
+
+    cout << ip << ";" << &c << ";" << ip+3 << '\n';
+    cout << c.getAdrX() << ";" << c.getAdrY() << '\n';
+
+    ip+=3;
+    *ip = 25;
+    ++ip;
+    *ip = 138;
     cout<<c.get_x()<<" "<<c.get_y() <<"\n";
     return 0;
 }
