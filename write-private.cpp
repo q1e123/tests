@@ -2,19 +2,22 @@
 #include <cstdint>
 using namespace std;
 class C{
-    int x=0;
 public:
+    int get_y(){return y;}
     int get_x(){return x;}
+private:
+    int x=0;
     int y=0;
 };
 
 int main(){
-    int i;
+    bool b;
+    bool *bp = &b;
     C c;
-    int *ip = &c.y;
-    *ip = 123;
-    --ip;
-    *ip = 123;
-    cout<<c.get_x()<<" "<<c.y <<"\n";
+    bp+=16;
+    *bp = 1;
+    bp-=4;
+    *bp=1;
+    cout<<c.get_x()<<" "<<c.get_y() <<"\n";
     return 0;
 }
